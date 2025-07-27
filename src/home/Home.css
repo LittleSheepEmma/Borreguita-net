@@ -1,0 +1,145 @@
+.header {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: auto;
+  overflow-x: hidden;
+  background: linear-gradient(to top, #dca3fd, #8a74c5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#canvas-container::before {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 50%;
+  background-image: url('/img/mtceleste.png');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 800px 800px;
+  background-position-y: 300px;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+  border: 4px solid white;
+  background-color: white;
+}
+
+.body {
+  background-color: rgba(255, 202, 240, 0.6);
+  border-radius: 1rem;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  position: relative;
+  max-width: 800px;
+  width: 90%;
+}
+
+.social-links .btn {
+  font-size: 1.5rem;
+  z-index: 1;
+}
+
+footer {
+  z-index: 1;
+}
+
+.bigbtn {
+  font-size: 1.5rem;
+  background: linear-gradient(145deg, #3854a1, #41319b);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.25rem;
+  box-shadow: 
+    inset 4px 4px 8px rgba(255, 255, 255, 0.15),
+    inset -4px -4px 8px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.bigbtn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #ffb2e6 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 0;
+}
+
+.bigbtn:hover {
+  color: white;
+  transform: translateY(-2px);
+  box-shadow:
+    inset 2px 2px 4px rgba(255, 255, 255, 0.2),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.25),
+    0 0 18px rgba(255, 165, 230, 0.6);
+  background: linear-gradient(145deg, #bd74e7, #9349b5);
+}
+
+.bigbtn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.3;
+}
+
+.bigbtn:active {
+  color: white !important;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 4px 0;
+  }
+
+  .bigbtn {
+    font-size: 1rem;
+    white-space: normal;
+    padding: 0.75rem;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+}
