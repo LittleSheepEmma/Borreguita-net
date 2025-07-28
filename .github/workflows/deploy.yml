@@ -1,0 +1,44 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: |
+        npm install
+        npm install -g vite
+
+    - name: Build React app
+      run: |
+        npm run build
+
+    - name: Deploy to VPS
+      env:
+        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        VPS_IP: ${{ secrets.VPS_IP }}
+      run: |
+        # Setup SSH
+        mkdir -p ~/.ssh
+        echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+
+        # Add VPS host to known hosts to prevent SSH prompt
+        ssh-keyscan -p 9357 -H $VPS_IP >> ~/.ssh/known_hosts
+
+        # Copy files to VPS using the secret IP
+        rsync -avz --delete ./dist/ root@$VPS_IP:/var/www/borreguitapage/
