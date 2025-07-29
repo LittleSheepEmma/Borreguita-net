@@ -35,6 +35,10 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y rsync
 
+    - name: Test SSH connection
+      run: |
+        ssh -p 9357 root@$VPS_IP "echo 'SSH connection successful!'"
+
     - name: Deploy to VPS
       env:
         PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
