@@ -36,6 +36,8 @@ jobs:
         sudo apt-get install -y rsync
 
     - name: Test SSH connection
+      env:
+        VPS_IP: ${{ secrets.VPS_IP }}
       run: |
         ssh -p 9357 root@$VPS_IP "echo 'SSH connection successful!'"
 
