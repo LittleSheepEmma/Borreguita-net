@@ -4,7 +4,7 @@ import { SiPandas, SiTemporal } from 'react-icons/si'
 import { FaHtml5 } from 'react-icons/fa'
 import { FaDatabase } from 'react-icons/fa'
 import { TbChartInfographic } from 'react-icons/tb'
-import { AiOutlineDotNet } from 'react-icons/ai'
+import { SiDotnet } from 'react-icons/si'
 import { SiTensorflow } from 'react-icons/si'
 import './Portfolio.css'
 import { language } from '../utils/locales'
@@ -192,7 +192,7 @@ function Portfolio(props: PortfolioProps) {
             </li>
             <li className="skill-item">
               <div className="skill-info">
-                <AiOutlineDotNet className="icon" />
+                <SiDotnet className="icon" />
                 <span>C#, .NET</span>
               </div>
               <div className="skill-bar-container">
