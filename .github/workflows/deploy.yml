@@ -23,7 +23,7 @@ jobs:
         npm install
         npm install -g vite
 
-    - name: Check Node version (must be >= 18)
+    - name: Check Node version
       run: node -v
 
     - name: Build React app
@@ -31,7 +31,9 @@ jobs:
         npm run build
 
     - name: Install rsync
-      run: sudo apt-get install -y rsync
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y rsync
 
     - name: Deploy to VPS
       env:
