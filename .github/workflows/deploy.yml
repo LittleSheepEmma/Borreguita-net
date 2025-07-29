@@ -20,7 +20,7 @@ jobs:
 
     - name: Install dependencies
       run: |
-        npm 
+        npm ci
         npm install -g vite
 
     - name: Check Node version (must be >= 18)
