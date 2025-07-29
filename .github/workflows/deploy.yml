@@ -35,12 +35,6 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y rsync
 
-    - name: Test SSH connection
-      env:
-        VPS_IP: ${{ secrets.VPS_IP }}
-      run: |
-        ssh -p 9357 root@$VPS_IP "echo 'SSH connection successful!'"
-
     - name: Deploy to VPS
       env:
         PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -53,6 +47,8 @@ jobs:
 
         # Add VPS host to known hosts to prevent SSH prompt
         ssh-keyscan -p 9357 -H $VPS_IP >> ~/.ssh/known_hosts
+
+        ssh -p 9357 root@$VPS_IP "echo 'SSH connection successful!'"
 
         # Copy files to VPS
         rsync -avz --delete -e "ssh -p 9357" ./dist/ root@$VPS_IP:/var/www/borreguitapage/
