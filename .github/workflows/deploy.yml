@@ -20,8 +20,11 @@ jobs:
 
     - name: Install dependencies
       run: |
-        npm install --legacy-peer-deps
+        npm ci
         npm install -g vite
+
+    - name: Check Node version (must be >= 18)
+      run: node -v
 
     - name: Build React app
       run: |
