@@ -44,4 +44,4 @@ jobs:
         ssh-keyscan -p 9357 -H $VPS_IP >> ~/.ssh/known_hosts
 
         # Copy files to VPS using the secret IP
-        rsync -avz --delete ./dist/ root@$VPS_IP:/var/www/borreguitapage/
+        rsync -avz --delete -e "ssh -p 9357" ./dist/ root@$VPS_IP:/var/www/borreguitapage/
