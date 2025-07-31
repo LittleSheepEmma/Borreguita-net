@@ -62,7 +62,7 @@ function Portfolio(props: PortfolioProps) {
               <i className="bi bi-github"></i> GitHub
             </a>
             <a
-              href="/pub/cv.pdf"
+              href={currentLanguage === 'es' ?  '/pub/cv.pdf' : '/pub/cv-en.pdf'}
               target="_blank"
               rel="noopener noreferrer"
               className="social-btn"
